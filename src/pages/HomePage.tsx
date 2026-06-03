@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BookOpen, Clock, Target, ArrowRight, BarChart2, Brain,  } from 'lucide-react'
+import { BookOpen, ArrowRight,   } from 'lucide-react'
 
 const chartBars = [
   { label: 'L', pct: 55 },
@@ -67,18 +67,7 @@ function DashboardPreview() {
   )
 }
 
-const features = [
-  { icon: Clock, title: 'Registra sesiones', description: 'Captura materia, duración y notas en segundos. Sin fricción.' },
-  { icon: BarChart2, title: 'Visualiza patrones', description: 'Descubre qué días rindes más y qué materias consumen tu tiempo.' },
-  { icon: Target, title: 'Metas semanales', description: 'Define objetivos por materia y monitorea tu avance en tiempo real.' },
-  { icon: Brain, title: 'Recomendaciones IA', description: 'Sugerencias personalizadas para optimizar horarios y retención.' },
-]
 
-const steps = [
-  { n: '01', title: 'Crea tu cuenta', body: 'Regístrate gratis con tu correo en menos de un minuto.' },
-  { n: '02', title: 'Registra sesiones', body: 'Agrega cada bloque de estudio: materia, tiempo y notas.' },
-  { n: '03', title: 'Mejora continua', body: 'Revisa tus estadísticas y aplica las recomendaciones de IA.' },
-]
 
 export function HomePage() {
   return (
