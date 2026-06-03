@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { BookOpen, ArrowRight,   } from 'lucide-react'
+// Volvimos a importar los íconos que vamos a usar en las nuevas secciones
+import { BookOpen, Clock, Target, ArrowRight, BarChart2, Brain } from 'lucide-react'
 
 const chartBars = [
   { label: 'L', pct: 55 },
@@ -9,6 +10,20 @@ const chartBars = [
   { label: 'V', pct: 70 },
   { label: 'S', pct: 30 },
   { label: 'D', pct: 50 },
+]
+
+// Volvemos a declarar las características y los pasos
+const features = [
+  { icon: Clock, title: 'Registra sesiones', description: 'Captura materia, duración y notas en segundos. Sin fricción.' },
+  { icon: BarChart2, title: 'Visualiza patrones', description: 'Descubre qué días rindes más y qué materias consumen tu tiempo.' },
+  { icon: Target, title: 'Metas semanales', description: 'Define objetivos por materia y monitorea tu avance en tiempo real.' },
+  { icon: Brain, title: 'Recomendaciones IA', description: 'Sugerencias personalizadas para optimizar horarios y retención.' },
+]
+
+const steps = [
+  { n: '01', title: 'Crea tu cuenta', body: 'Regístrate gratis con tu correo en menos de un minuto.' },
+  { n: '02', title: 'Registra sesiones', body: 'Agrega cada bloque de estudio: materia, tiempo y notas.' },
+  { n: '03', title: 'Mejora continua', body: 'Revisa tus estadísticas y aplica las recomendaciones de IA.' },
 ]
 
 function DashboardPreview() {
@@ -67,11 +82,10 @@ function DashboardPreview() {
   )
 }
 
-
-
 export function HomePage() {
   return (
     <div className="min-h-screen bg-white flex flex-col text-gray-900">
+      {/* 1. HEADER INTACTO */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-lg">
@@ -90,7 +104,9 @@ export function HomePage() {
           </Link>
         </div>
       </header>
+
       <main className="flex-1">
+        {/* 2. HERO SECTION INTACTO */}
         <section className="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -118,7 +134,8 @@ export function HomePage() {
             </div>
           </div>
         </section>
-        {/* Features resumidas para no saturar el código aquí, pero es el mismo componente */}
+
+        {/* 3. ESTADÍSTICAS INTACTAS */}
         <section className="border-y border-gray-100 bg-gray-50 py-10">
           <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-3 gap-6 text-center">
             {[ { value: '100%', label: 'Gratuito para siempre' }, { value: '< 1 min', label: 'Para registrar una sesión' }, { value: '0', label: 'Datos vendidos a terceros' } ].map(({ value, label }) => (
@@ -129,7 +146,63 @@ export function HomePage() {
             ))}
           </div>
         </section>
+
+        {/* --- NUEVO CONTENIDO A PARTIR DE AQUÍ --- */}
+
+        {/* 4. SECCIÓN DE CARACTERÍSTICAS (FEATURES) */}
+        <section className="py-20 lg:py-28 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Todo lo que necesitas para dominar el semestre</h2>
+              <p className="mt-4 text-lg text-gray-500">Herramientas diseñadas para que dejes de adivinar y empieces a medir tu progreso real de forma inteligente.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map(({ icon: Icon, title, description }) => (
+                <div key={title} className="relative p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                  <div className="w-12 h-12 inline-flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 mb-5">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. SECCIÓN CÓMO FUNCIONA (STEPS) */}
+        <section className="py-20 lg:py-28 bg-gray-900 text-white rounded-t-[3rem]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Tres pasos para tu mejor versión</h2>
+              <p className="mt-4 text-lg text-gray-400">Sin configuraciones complejas ni métricas aburridas. Empieza a estudiar mejor hoy mismo.</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-10">
+              {steps.map(({ n, title, body }) => (
+                <div key={n} className="relative flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center text-2xl font-bold mb-6 shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
+                    {n}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">{title}</h3>
+                  <p className="text-gray-400 leading-relaxed px-4">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* 6. FOOTER */}
+      <footer className="bg-gray-900 pt-10 pb-8 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2 font-bold text-lg text-white">
+            <BookOpen className="h-6 w-6 text-indigo-500" /> StudyAI
+          </div>
+          <p className="text-sm text-gray-400">
+            © {new Date().getFullYear()} StudyAI. Construido para estudiantes.
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }
