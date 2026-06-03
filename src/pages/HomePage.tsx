@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BookOpen, Clock, Target, , ArrowRight, BarChart2, Brain,  } from 'lucide-react'
+import { BookOpen, Clock, Target, ArrowRight, BarChart2, Brain,  } from 'lucide-react'
 
 const chartBars = [
   { label: 'L', pct: 55 },
